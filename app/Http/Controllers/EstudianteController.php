@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -95,5 +96,15 @@ class EstudianteController extends Controller
         //
         Estudiante::destroy($id);
 	    return redirect('estudiante');
+    }
+
+    public function get()
+    {
+        global $mysqli;
+        $resultado = $mysqli->query("SELECT nombre FROM materias");
+        return $resultado->fetch_all(MYSQLI_ASSOC);
+
+        return view('estudiante.create')->with($resultado->fetch_all(MYSQLI_ASSOC));
+        
     }
 }

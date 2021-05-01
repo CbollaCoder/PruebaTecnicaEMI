@@ -25,7 +25,7 @@
             <td> 
                 <a href="{{url('/materia/'.$materia->id.'/edit')}}" class="btn btn-warning" > Editar </a> 
                 |
-                <form action="{{url('/materia/'.$materia->id)}}" method="post">
+                <form action="{{url('/materia/'.$materia->id)}}" class="d-inline" method="post">
                     @csrf
                     {{method_field('DELETE')}}
                     <input type="submit" class="btn btn-danger" onclick="return confirm('Quieres borrar?')" value="Borrar">
